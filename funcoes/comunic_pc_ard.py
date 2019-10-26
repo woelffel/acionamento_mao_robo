@@ -30,3 +30,9 @@ class arduino():
         #### Preparando mensagem
         mensagem = str(comando)
         conexao.write(mensagem.encode('utf-8'))
+    
+    #### Finaliza a conexao serial
+    def fechar_conexao(conexao):
+        conexao.close()
+
+
