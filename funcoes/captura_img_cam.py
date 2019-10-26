@@ -10,14 +10,12 @@ class opencv():
         camera = cv2.VideoCapture(0)
         return camera
 
-    def captura_frame_gray(camera):
+    def captura_frame(camera):
         # Capture frame-by-frame
         ret, frame = camera.read()
-
         # Our operations on the frame come here
-        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-
-        return gray
+        # gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        return frame
 
     def show_image(frame, comando):
         ### Display the resulting frame
