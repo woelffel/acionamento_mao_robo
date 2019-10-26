@@ -31,6 +31,20 @@ class arduino():
         mensagem = str(comando)
         conexao.write(mensagem.encode('utf-8'))
     
+    def recebe_mensagem(conexao):
+        if (conexao.in_waiting > 0):
+            mensagem_volta = conexao.read(size = 6).decode("utf-8")
+            mensagem_volta = mensagem_volta[:3]
+            conexao.flush()
+            if (mensagem_volta == ':8:'):
+                return "Mensagem_nao_valida"
+            elif (mensagem_volta == ':9:'):
+                return "Comando_nao_valido"
+            else:
+                return "Ok"
+        else:
+            return "Esperar_resposta"
+
     #### Finaliza a conexao serial
     def fechar_conexao(conexao):
         conexao.close()
